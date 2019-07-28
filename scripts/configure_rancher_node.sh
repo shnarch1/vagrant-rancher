@@ -21,7 +21,7 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-agent_ip=`ip addr show enp0s8 | grep -w inet | awk '{print $2}' | cut -d/ -f1`
+agent_ip=`ip addr show eth1 | grep -w inet | awk '{print $2}' | cut -d/ -f1`
 
 for image in $curlimage $jqimage; do
   until docker inspect $image > /dev/null 2>&1; do

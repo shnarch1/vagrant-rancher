@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
 
     config.vm.define "server-01" do |server|
      c = x.fetch('server')
-      server.vm.box= "ubuntu/bionic64"
+      server.vm.box= "generic/ubuntu1804"
       server.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
         v.cpus = c.fetch('cpus')
@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
     c = x.fetch('node')
     hostname = "node-%02d" % i
     config.vm.define hostname do |node|
-      node.vm.box   = "ubuntu/bionic64"
+      node.vm.box   = "generic/ubuntu1804"
       node.vm.provider "virtualbox" do |v|
         v.cpus = c.fetch('cpus')
         v.memory = c.fetch('memory')
